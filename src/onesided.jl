@@ -49,8 +49,8 @@ processes to perform RMA operations. This is a collective call over `comm`.
   `sizeof(eltype(base))`)
 - `infokws` are info keys providing optimization hints to the runtime.
 
-[`MPI.free`](@ref) should be called on the `Win` object once operations have
-been completed.
+[`MPI.free`](@ref) MUST be called on the `Win` object once operations have
+been completed and before MPI.Finalize().
 """
 function Win_create(base, size::Integer, disp_unit::Integer, comm::Comm; infokws...)
     win = Win()
